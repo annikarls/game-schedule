@@ -4,14 +4,20 @@ require("includes/conn.php");
 require("includes/functions.php");
 
 $connection = dbConnect();
-require("includes/header.php");
+require("includes/header_loggedin.php");
 ?>
 <section class="hero is-fullheight">
 <div class="hero-body">
 <div class="container has-text-centered">
-    <p><a href="team_create.php"><button>Lägg till lag</button></a></p>
-    <p><a href="game_create.php"><button>Lägg till match</button></a></p>
-    <p><a href="arena_create.php"><button>Lägg till arena</button></a></p>
+    <div class="field">
+    <a class="button" href="team_create.php">Lägg till lag</a>
+    </div>
+    <div class="field">
+    <a class="button" href="game_create.php">Lägg till match</a>
+    </div>
+    <div class="field">
+    <a class="button" href="stadium_create.php">Lägg till arena</a>
+    </div>
     </div>
 </div>
 </section>

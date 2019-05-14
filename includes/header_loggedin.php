@@ -16,7 +16,7 @@
 <nav class="navbar" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
     <a class="navbar-item" href="index.php">Hem</a>
-    <a class="navbar-item" href="login_page.php">Logga in</a>
+    <a class="navbar-item" href="logout.php">Logga ut</a>
 
     
     <a role="button" class="navbar-burger burger" 

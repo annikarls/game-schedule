@@ -55,9 +55,16 @@ require("includes/header.php");
      <div class="field">
      <label class="label">Arena:</label>
          <div class="select">
-     <p><select name="stadium">
-         <option value="chooseStadium">Exampelarena</option>
-     </select></p>
+     <select name="stadium">
+         <?php
+         $query = "SELECT * FROM stadium ORDER BY stadiumName ASC";
+         $result = mysqli_query($connection, $query);
+             while ($rows = mysqli_fetch_array($result)) {
+                 $stadiumName = $rows['stadiumName'];
+                 echo "<option value='$stadiumName'>$stadiumName</option>";
+             }
+            ?>
+     </select>
      </div>
      </div>
      <p><input class="button" type="submit" value="Lägg till"></p>
