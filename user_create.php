@@ -10,6 +10,9 @@ if (isset($_POST['isnew']) && $_POST['isnew'] == 1) {
 }
 require("includes/header.php");
 ?>
+<section class="hero is-fullheight">
+<div class="hero-body">
+<div class="container has-text-centered">
    <form action="user_create.php" method="post">
         <input type="hidden" name="isnew" id="isnew" value="1">
         <label>Email:</label>
@@ -18,6 +21,9 @@ require("includes/header.php");
         <p><input type="password" name="password"></p>
         <p><input type="submit" value="Registrera"></p>
    </form>
+   </div>
+</div>
+</section>
    <?php
    dbDisconnect($connection);
    ?>

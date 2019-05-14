@@ -45,4 +45,31 @@ function addTeam($conn) {
     $insId = mysqli_insert_id($conn);
     return $insId;
 }
+
+//Visa alla lag
+function getTeams($conn) {
+    $query = "SELECT * FROM team ORDER BY teamName ASC";
+    $result = mysqli_query($conn, $query) or die("Query failed: $query");
+    return $result;
+}
+
+//Hämtar ett lag
+function getTeamData($conn,$teamId){
+    $query = "SELECT * FROM team
+			WHERE teamId=".$teamId;
+
+    $result = mysqli_query($conn,$query) or die("Query failed: $query");
+
+    $row = mysqli_fetch_assoc($result);
+
+    return $row;
+}
+
+//Redigera lag
+function editTeam($conn) {
+    $teamName = escapeInsert($conn, $_POST['teamname']);
+    $editid = $_POST['updateid'];
+    $query = "UPDATE team SET teamName='$teamName' WHERE teamId=". $editid;
+    $result = mysqli_query($conn, $query) or die("Query failed: $query");
+}
 ?>

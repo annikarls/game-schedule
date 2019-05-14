@@ -6,11 +6,16 @@ require("includes/functions.php");
 $connection = dbConnect();
 require("includes/header.php");
 ?>
- <h1>Lägg till match</h1>   
+<section class="hero is-fullheight">
+<div class="hero-body">
+<div class="container has-text-centered">
+ <h1 class="title">Lägg till match</h1>   
  <form action="game_create.php" method="post">
      <input type="hidden" name="isnew" value="1">
-     <label>Lag:</label>
-     <p><select name="team1">
+     <div class="field">
+     <label class="label">Lag:</label>
+     <div class="select">
+     <select name="team1">
          <?php        
         $query = "SELECT * FROM team ORDER BY teamName ASC";
         $result = mysqli_query($connection, $query);
@@ -20,7 +25,9 @@ require("includes/header.php");
          }
          ?>
      </select>
+     </div>
      -
+     <div class="select">
      <select name="team2">
      <?php
      $query = "SELECT * FROM team ORDER BY teamName ASC";
@@ -30,16 +37,35 @@ require("includes/header.php");
              echo "<option value='$teamName2'>$teamName2</option>";
          }
          ?>
-     </select></p>
-     <label>Datum:</label>
-     <p><input type="date" name="date"></p>
-     <label>Tid:</label>
-     <p><input type="time" name="time"></p>
-     <label>Arena:</label>
+     </select>
+     </div>
+     </div>
+     <div class="field">
+     <label class="label">Datum:</label>
+     <div class="control">
+     <p><input class="input" type="date" name="date"></p>
+     </div>
+     </div>
+     <div class="field">
+     <label class="label">Tid:</label>
+     <div class="control">
+     <p><input class="input" type="time" name="time"></p>
+     </div>
+     </div>
+     <div class="field">
+     <label class="label">Arena:</label>
+         <div class="select">
      <p><select name="stadium">
          <option value="chooseStadium">Exampelarena</option>
      </select></p>
-     <p><input type="submit" value="Lägg till"></p>
+     </div>
+     </div>
+     <p><input class="button" type="submit" value="Lägg till"></p>
  </form>
+ <p>
+     <a href="loggedin_start.php">Tillbaka</a></p>
+</div>
+</div>
+</section>
 </body>
 </html>

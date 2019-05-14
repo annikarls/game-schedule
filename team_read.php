@@ -5,14 +5,22 @@ require("includes/functions.php");
 
 $connection = dbConnect();
 require("includes/header.php");
+$allTeams = getTeams($connection);
 ?>
 <section class="hero is-fullheight">
 <div class="hero-body">
 <div class="container has-text-centered">
-    <p><a href="team_create.php"><button>Lägg till lag</button></a></p>
-    <p><a href="game_create.php"><button>Lägg till match</button></a></p>
-    <p><a href="arena_create.php"><button>Lägg till arena</button></a></p>
-    </div>
+<ul>
+<?php
+while ($row = mysqli_fetch_array($allTeams)) {
+    ?>
+    <li class="is-size-3"><?php echo $row['teamName']; ?> <a href="team_update.php?editid=<?php echo $row['teamId'];?>">Uppdatera</a></li>
+    <?php
+}
+?>
+</ul>
+<p><a href="index.php.php">Tillbaka</a></p>
+</div>
 </div>
 </section>
 <?php

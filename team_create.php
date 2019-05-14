@@ -10,14 +10,22 @@ if (isset($_POST['isnew']) && $_POST['isnew'] ==1 ) {
 }
 require("includes/header.php");
 ?>
-<h1>Lägg till lag</h1>
+<section class="hero is-fullheight">
+<div class="hero-body">
+<div class="container has-text-centered">
+<h1 class="title">Lägg till lag</h1>
 <form action="team_create.php" method="post">
     <input type="hidden" name="isnew" value="1">
-    <label>Namn:</label>
-    <p><input type="text" name="teamname"></p>
-    <p><input type="submit" value="Lägg till"></p>
+    <div class="field">
+    <label class="label">Namn:</label>
+    <input type="text" name="teamname">
+    </div>
+    <input class="button" type="submit" value="Lägg till">
 </form>
-<p><a href="loggedin_start.php">Tillbaka</a></p>
+<a href="loggedin_start.php">Tillbaka</a>
+</div>
+</div>
+</section>
 <?php
 dbDisconnect($connection);
 ?>
