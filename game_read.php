@@ -5,23 +5,27 @@ require("includes/functions.php");
 
 $connection = dbConnect();
 require("includes/header.php");
-$allTeams = getTeams($connection);
+$allGames = getGames($connection);
 ?>
 <section class="hero is-fullheight">
 <div class="hero-body">
 <div class="container has-text-centered">
-<ul>
+
 <?php
-while ($row = mysqli_fetch_array($allTeams)) {
+while ($row = mysqli_fetch_array($allGames)) {
     ?>
-    <li class="is-size-3"><?php echo $row['teamName']; ?> 
-    <a href="team_update.php?editid=<?php echo $row['teamId'];?>">Uppdatera</a>
-    <a href="team_delete.php?deleteid=<?php echo $row['teamId'];?>">Ta bort</a>
-</li>
+    <p class="is-size-3"><?php echo $row['gameDate']; ?> <?php echo $row['gameTime']; ?></p>
     <?php
+    $gameId = $row['gameId'];
+    $allTeamGames = getGameTeam($connection, $gameId);
+    while ($rowt = mysqli_fetch_array($allTeamGames)) {
+        ?>
+        <?php echo $rowt['teamName']; ?>
+        <?php
+    }
 }
 ?>
-</ul>
+
 <p><a href="index.php">Tillbaka</a></p>
 </div>
 </div>

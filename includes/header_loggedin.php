@@ -32,7 +32,7 @@
     </div>
 
     <div class="navbar-end">
-    <a class="navbar-item" href="index.php">Spelschema</a>
+    <a class="navbar-item" href="game_read.php">Spelschema</a>
     <a class="navbar-item" href="team_read.php">Lag</a>
     <a class="navbar-item" href="stadium_read.php">Arenor</a>
     </div>

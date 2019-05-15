@@ -57,11 +57,8 @@ function getTeams($conn) {
 function getTeamData($conn,$teamId){
     $query = "SELECT * FROM team
 			WHERE teamId=".$teamId;
-
     $result = mysqli_query($conn,$query) or die("Query failed: $query");
-
     $row = mysqli_fetch_assoc($result);
-
     return $row;
 }
 
@@ -103,7 +100,7 @@ function getStadiums($conn) {
     return $result;
 }
 
-//Hämta ett lag
+//Hämta en arena
 function getStadiumData($conn, $stadiumId) {
     $query = "SELECT * FROM stadium
 			WHERE stadiumId=".$stadiumId;
@@ -116,5 +113,58 @@ function getStadiumData($conn, $stadiumId) {
 function deleteStadium($conn, $stadiumId) {
     $query = "DELETE FROM stadium WHERE stadiumId=". $stadiumId;
     $result = mysqli_query($conn, $query) or die("Query failed: $query");
+}
+
+//Lägga till match
+function saveGameTeam($conn) {
+    $team1 = escapeInsert($conn, $_POST['team1']);
+    $team2 = escapeInsert($conn, $_POST['team2']);
+    
+    // Spara match
+    $gameId = addGame($conn);
+    // Spara match och team i mellantabell (två gånger)
+    addGameTeam($conn,$gameId,$team1);
+    addGameTeam($conn,$gameId,$team2);
+}
+
+function addGame($conn) {
+   
+    // Spara match
+    $gameDate = escapeInsert($conn, $_POST['gamedate']);
+    $gameTime = escapeInsert($conn, $_POST['gametime']);
+    $gameStadium = escapeInsert($conn, $_POST['gamestadium']);
+    $query = "INSERT INTO game (gameDate, gameTime, gameStadiumId) VALUES('$gameDate', '$gameTime', '$gameStadium')";
+    $result = mysqli_query($conn, $query) or die("Query failed: $query");
+    $insId = mysqli_insert_id($conn);
+    return $insId;
+}
+
+function addGameTeam($conn,$gameId,$team) {
+
+    // Spara match och team i mellantabell (två gånger)
+    $query = "INSERT INTO gameTeam (gameTeamGid, gameTeamTid) VALUES('$gameId', '$team')";
+    $result = mysqli_query($conn, $query) or die("Query failed: $query");
+    $insId = mysqli_insert_id($conn);
+    return $insId;
+}
+
+//Visa alla matcher
+function getGames($conn) {
+    $query = "SELECT gameId, gameDate, gameTime
+    FROM game ORDER BY gameDate ASC, gameTime ASC";
+    $result = mysqli_query($conn, $query) or die("Query failed: $query");
+    return $result;
+}
+
+function getGameTeam($conn,$gameId) {
+    $query = "SELECT game.gameDate, team.teamName, game.gameTime
+    FROM team 
+    INNER JOIN gameTeam
+    ON team.teamId = gameTeam.gameTeamTid
+    INNER JOIN game 
+    ON gameTeam.gameTeamGid = game.gameId
+    WHERE gameTeam.gameTeamGid=" . $gameId;
+    $result = mysqli_query($conn, $query) or die("Query failed: $query");
+    return $result;
 }
 ?>

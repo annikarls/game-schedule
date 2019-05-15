@@ -22,7 +22,7 @@ require("includes/header.php");
 <form action="team_delete.php" method="post">
     <input type="hidden" name="isdeleteid" value="<?php echo $isDeleteid; ?>">
     <label class="label">Vill du verkligen ta bort detta lag?</label>
-    <input class="button" type="submit" value="JA">
+    <input class="button" type="submit" value="OK">
 </form>
 <a href="team_read.php">Tillbaka</a>
 </div>

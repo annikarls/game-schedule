@@ -41,15 +41,15 @@ ALTER TABLE table_name RENAME COLUMN old_col_name TO new_col_name;
 
 -- TODO:
 -- använda oop
--- delete team - fungerar ej
--- create game
+-- delete team - klart
+-- create game - arena fungerar ej
 -- read game
 -- update game
 -- delete game
 -- create stadium - klart
 -- read stadium - klart
 -- update stadium - klart
--- delete stadium - fungerar ej
+-- delete stadium - klart
 -- annan navbar när man är inloggad
 -- bara kunna create, update, delete när man är inloggad
 -- se över design på samtliga sidor

@@ -4,7 +4,14 @@ require("includes/conn.php");
 require("includes/functions.php");
 
 $connection = dbConnect();
+
 require("includes/header.php");
+
+
+if (isset($_POST['isnew']) && $_POST['isnew'] == 1) {
+    saveGameTeam($connection);
+    //header("Location: team_update.php?editid=".$_POST['updateid']);
+}
 ?>
 <section class="hero is-fullheight">
 <div class="hero-body">
@@ -20,8 +27,9 @@ require("includes/header.php");
         $query = "SELECT * FROM team ORDER BY teamName ASC";
         $result = mysqli_query($connection, $query);
          while ($rows = mysqli_fetch_array($result)) {
+            $teamId1 = $rows['teamId'];
              $teamName1 = $rows['teamName'];
-             echo "<option value='$teamName1'>$teamName1</option>";
+             echo "<option value='$teamId1'>$teamName1</option>";
          }
          ?>
      </select>
@@ -34,7 +42,8 @@ require("includes/header.php");
      $result = mysqli_query($connection, $query);
          while ($rows = mysqli_fetch_array($result)) {
              $teamName2 = $rows['teamName'];
-             echo "<option value='$teamName2'>$teamName2</option>";
+             $teamId2 = $rows['teamId'];
+             echo "<option value='$teamId2'>$teamName2</option>";
          }
          ?>
      </select>
@@ -43,25 +52,26 @@ require("includes/header.php");
      <div class="field">
      <label class="label">Datum:</label>
      <div class="control">
-     <p><input class="input" type="date" name="date"></p>
+     <p><input class="input" type="date" name="gamedate"></p>
      </div>
      </div>
      <div class="field">
      <label class="label">Tid:</label>
      <div class="control">
-     <p><input class="input" type="time" name="time"></p>
+     <p><input class="input" type="time" name="gametime"></p>
      </div>
      </div>
      <div class="field">
      <label class="label">Arena:</label>
          <div class="select">
-     <select name="stadium">
+     <select name="gamestadium">
          <?php
          $query = "SELECT * FROM stadium ORDER BY stadiumName ASC";
          $result = mysqli_query($connection, $query);
              while ($rows = mysqli_fetch_array($result)) {
                  $stadiumName = $rows['stadiumName'];
-                 echo "<option value='$stadiumName'>$stadiumName</option>";
+                 $stadiumId = $rows['stadiumId'];
+                 echo "<option value='$stadiumId'>$stadiumName</option>";
              }
             ?>
      </select>
