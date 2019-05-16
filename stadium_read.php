@@ -22,7 +22,7 @@ while ($row = mysqli_fetch_array($allStadiums)) {
 }
 ?>
 </ul>
-<p><a href="index.php.php">Tillbaka</a></p>
+<p><a href="index.php">Tillbaka</a></p>
 </div>
 </div>
 </section>

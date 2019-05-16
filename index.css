@@ -6,10 +6,12 @@
 
   body {
     margin: 0;
+    color: black;
+    font-family: 'Roboto', sans-serif;
   }
   
   .hero-body {
-    background-image: url("media/naphtali-marshall-13585-unsplash.jpg");
+    background-image: url("media/cesar-couto-420982-unsplash.jpg");
     background-color: #cccccc;
     height: 500px;
     background-position: center;
@@ -20,5 +22,12 @@
 
   .title {
       color: white;
+  }
 
+  .button {
+    font-family: 'Roboto', sans-serif;
+  }
+
+  .select select:not([multiple]) {
+    font-family: 'Roboto', sans-serif;
   }

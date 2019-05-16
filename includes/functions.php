@@ -28,7 +28,7 @@ function checkUser($connection) {
     if ($count == 1) {
         if (password_verify($checkPassword, $row["userPassword"])) {
             $_SESSION['status'] = "ok";
-            //$_SESSION['userid'] = $row['userId'];
+            $_SESSION['userid'] = $row['userId'];
             header("Location: loggedin_start.php");
         }       
     }else {
@@ -166,5 +166,14 @@ function getGameTeam($conn,$gameId) {
     WHERE gameTeam.gameTeamGid=" . $gameId;
     $result = mysqli_query($conn, $query) or die("Query failed: $query");
     return $result;
+}
+
+//Hämta inloggads email
+function getUserEmail($conn){
+    $query = "SELECT userEmail FROM users
+			WHERE userId=".$_SESSION['userid'];
+    $result = mysqli_query($conn,$query) or die("Query failed: $query");
+    $row = mysqli_fetch_assoc($result);
+    return $row['userEmail'];
 }
 ?>

@@ -36,14 +36,16 @@ CREATE TABLE users(
 );
 
 DELETE FROM team WHERE teamId = 1;
+DELETE FROM gameteam WHERE gameTeamId = 1;
+DELETE FROM game WHERE gameId = 3;
 
 ALTER TABLE table_name RENAME COLUMN old_col_name TO new_col_name;
 
 -- TODO:
--- använda oop
+-- använda oop - klart
 -- delete team - klart
--- create game - arena fungerar ej
--- read game
+-- create game - klart
+-- read game - klart (ej snyggt dock)
 -- update game
 -- delete game
 -- create stadium - klart
