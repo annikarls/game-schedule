@@ -39,8 +39,6 @@ DELETE FROM team WHERE teamId = 1;
 DELETE FROM gameteam WHERE gameTeamId = 1;
 DELETE FROM game WHERE gameId = 3;
 
-ALTER TABLE table_name RENAME COLUMN old_col_name TO new_col_name;
-
 -- TODO:
 -- använda oop - klart
 -- delete team - klart
