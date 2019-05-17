@@ -8,7 +8,7 @@ class Preferences {
     }
 
     public function showFooter(){
-        echo "Vanlig användare";
+        echo "Spelschema för Damallsvenskan 2019";
     }
 }
 ?>

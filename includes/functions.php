@@ -73,7 +73,8 @@ function editTeam($conn) {
 //Ta bort lag
 function deleteTeam($conn, $teamId) {
     $query = "DELETE FROM team WHERE teamId=". $teamId;
-    $result = mysqli_query($conn, $query) or die("Query failed: $query");
+    $result = mysqli_query($conn, $query) or die("Går ej att utföra pga att laget redan finns inlagt i spelschemat");
+    
 }
 
 //Lägga till arena
@@ -150,8 +151,10 @@ function addGameTeam($conn,$gameId,$team) {
 
 //Visa alla matcher
 function getGames($conn) {
-    $query = "SELECT gameId, gameDate, gameTime
-    FROM game ORDER BY gameDate ASC, gameTime ASC";
+    $query = "SELECT game.gameId, game.gameDate, game.gameTime, stadium.stadiumName
+    FROM game, stadium
+    WHERE stadium.stadiumId = game.gameStadiumId
+    ORDER BY gameDate ASC, gameTime ASC";
     $result = mysqli_query($conn, $query) or die("Query failed: $query");
     return $result;
 }

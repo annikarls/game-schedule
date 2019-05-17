@@ -10,8 +10,8 @@ $allTeams = getTeams($connection);
 while ($row = mysqli_fetch_array($allTeams)) {
     ?>
     <li class="is-size-3"><?php echo $row['teamName']; ?> 
-    <a href="team_update.php?editid=<?php echo $row['teamId'];?>">Uppdatera</a>
-    <a href="team_delete.php?deleteid=<?php echo $row['teamId'];?>">Ta bort</a>
+    <a class="button" href="team_update.php?editid=<?php echo $row['teamId'];?>">Uppdatera</a>
+    <a class="button" href="team_delete.php?deleteid=<?php echo $row['teamId'];?>">Ta bort</a>
 </li>
     <?php
 }

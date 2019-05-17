@@ -1,3 +1,13 @@
+<?php
+require 'Preferences.php';
+require 'PreferencesUser.php';
+session_start();
+require("includes/conn.php");
+require("includes/functions.php");
+
+$connection = dbConnect();
+$preferencesUser  = new Preferences('footer', 'email');
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,7 +28,7 @@
 <nav class="navbar" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
     <a class="navbar-item" href="index.php"><i class="fas fa-home"></i></a>
-    
+    <p class="navbar-item"><?php $preferencesUser->showFooter(); ?></p>
     <a role="button" class="navbar-burger burger" 
               onclick="document.querySelector('.navbar-menu').classList.toggle('is-active');">
       <span aria-hidden="true"></span>
