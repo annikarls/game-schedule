@@ -19,7 +19,7 @@ require("includes/header.php");
         <p><input type="email" name="email"></p>
         <label>Lösenord:</label>
         <p><input type="password" name="password"></p>
-        <p><input type="submit" value="Registrera"></p>
+        <p><input class="button" type="submit" value="Registrera"></p>
    </form>
    </div>
 </div>

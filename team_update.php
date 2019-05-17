@@ -1,9 +1,5 @@
 <?php
-session_start();
-require("includes/conn.php");
-require("includes/functions.php");
-
-$connection = dbConnect();
+require("includes/header_loggedin.php");
 
 if (isset($_GET['editid']) && $_GET['editid'] > 0) {
     $teamData = getTeamData($connection, $_GET['editid']);
@@ -13,7 +9,7 @@ if (isset($_POST['updateid']) && $_POST['updateid'] > 0) {
     editTeam($connection);
     header("Location: team_update.php?editid=".$_POST['updateid']);
 }
-require("includes/header.php");
+
 ?>
 <section class="hero is-fullheight">
 <div class="hero-body">
@@ -27,7 +23,7 @@ require("includes/header.php");
     </div>
     <input class="button" type="submit" value="Uppdatera">
 </form>
-<a href="loggedin_start.php">Tillbaka</a>
+<a href="team_read.php">Tillbaka</a>
 </div>
 </div>
 </section>

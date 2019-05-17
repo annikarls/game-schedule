@@ -51,6 +51,6 @@ DELETE FROM game WHERE gameId = 3;
 -- update stadium - klart
 -- delete stadium - klart
 -- annan navbar när man är inloggad
--- bara kunna create, update, delete när man är inloggad
--- se över design på samtliga sidor
+-- bara kunna create, update, delete när man är inloggad - klart
+-- se över design på samtliga sidor - klart
 -- footer med bl.a. tillbaka-knapp?

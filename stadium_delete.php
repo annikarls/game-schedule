@@ -1,9 +1,5 @@
 <?php
-session_start();
-require("includes/conn.php");
-require("includes/functions.php");
-
-$connection = dbConnect();
+require("includes/header_loggedin.php");
 
 if (isset($_GET['deleteid']) && $_GET['deleteid'] > 0 ) {
     $isDeleteid = $_GET['deleteid'];
@@ -13,7 +9,7 @@ if (isset($_POST['isdeleteid']) && $_POST['isdeleteid'] > 0 ) {
     deleteStadium($connection, $_POST['isdeleteid']);
     header("Location: stadium_read.php");
 }
-require("includes/header.php");
+
 ?>
 <section class="hero is-fullheight">
 <div class="hero-body">

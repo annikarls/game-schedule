@@ -1,15 +1,5 @@
 <?php
-require 'Preferences.php';
-require 'PreferencesUser.php';
-session_start();
-require("includes/conn.php");
-require("includes/functions.php");
-
-$connection = dbConnect();
-$getUserEmail = getUserEmail($connection);
-$preferencesUser  = new PreferencesUser('footer', $getUserEmail);
 require("includes/header_loggedin.php");
-
 
 if (isset($_POST['isnew']) && $_POST['isnew'] == 1) {
     saveGameTeam($connection);
@@ -17,7 +7,6 @@ if (isset($_POST['isnew']) && $_POST['isnew'] == 1) {
 }
 ?>
 <section class="hero is-fullheight">
-<?php $preferencesUser->showFooter(); ?>
 <div class="hero-body">
 <div class="container has-text-centered">
  <h1 class="title">Lägg till match</h1>   
